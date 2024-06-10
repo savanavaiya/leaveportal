@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('leave_datefrom');
             $table->string('leave_dateto');
             $table->string('leave_total_days');
+            $table->string('leave_reason');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed sav"
     onload="startTime()">
 
-    
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark">
@@ -408,11 +408,11 @@
 
             // Enable pusher logging - don't include this in production
             Pusher.logToConsole = true;
-        
+
             var pusher = new Pusher('d7efb3f2ab394df0f077', {
               cluster: 'ap2'
             });
-        
+
             var channel = pusher.subscribe('my-channel.'+$('#useid').val());
             channel.bind('my-event', function(data) {
               //   alert(JSON.stringify(data));
@@ -733,7 +733,8 @@
                             // alert();
                             $.ajax({
                                 beforeSend: function() {
-                                    $('.ajax-loader').css("visibility", "visible");
+                                    // $('.ajax-loader').css("visibility", "visible");
+                                    $('.ajax-loader').css("display", "block");
                                 },
                                 url: "{{ route('app_sub') }}",
                                 type: 'POST',
@@ -743,12 +744,16 @@
                                     if (data.error) {
                                         // alert(data.error);
                                         // $('#savanerr').html(data.error);
-                                        $('.ajax-loader').css("visibility", "hidden");
+                                        // $('.ajax-loader').css("visibility", "hidden");
+                                        // $('.ajax-loader').css("visibility", "hidden");
+                                        $('.ajax-loader').css("display", "none !important");
                                         swal("Fill The Fields!", "" + data.error);
                                     }
                                     if (data == true) {
                                         // swal("Your Application Submitted!");
-                                        $('.ajax-loader').css("visibility", "hidden");
+                                        // $('.ajax-loader').css("visibility", "hidden");
+                                        // $('.ajax-loader').css("visibility", "hidden");
+                                        $('.ajax-loader').css("display", "none !important");
                                         location.reload();
                                     }
                                 },

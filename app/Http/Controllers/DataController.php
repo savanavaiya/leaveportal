@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LeaveappShort;
 use App\Models\LeaveRecord;
 use App\Models\User;
 use Carbon\Carbon;
@@ -24,6 +25,15 @@ class DataController extends Controller
         return view('viewleave',compact('viewmore','i'));
     }
 
+    public function viewshortmore($id)
+    {
+        // $viewmore = User::with('leavedetails')->where('id',$id)->first();
+        $user = User::find($id);
+        $viewshortdata = LeaveappShort::where('email',$user->email)->get();
+        $i =1;
+        return view('viewshortleave',compact('viewshortdata','user','i'));
+    }
+
     public function monleav()
     {
 
@@ -42,7 +52,7 @@ class DataController extends Controller
 
         $fromser = $request->fromser;
         $toser = $request->toser;
-        
+
         $monthsers = LeaveRecord::whereBetween('leave_datefrom',[$fromser,$toser])->orwherebetween('leave_dateto',[$fromser,$toser])->with('username')->orderBy('leave_datefrom','asc')->get();
 
         $i=1;

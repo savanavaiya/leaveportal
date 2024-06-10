@@ -1,7 +1,7 @@
 @extends('common.com')
 
 @section('content')
-    
+
     <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -12,16 +12,16 @@
                 <h1 class="m-0">Leave Record Of Employees</h1>
               </div><!-- /.col -->
               <div class="col-sm-6 text-right">
-                <h5>Monthwise Filter <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#sermonthwise">
+                <h5>Month wise Filter <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#sermonthwise">
                   <i class="fas fa-calendar-alt"></i>
               </button></h5>
-                
+
               </div>
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
+
         <table class="table">
             <thead>
               <tr>
@@ -48,7 +48,7 @@
               @endforeach
             </tbody>
           </table>
-      
+
 
     <!-- Modal -->
 <div class="modal fade" id="sermonthwise" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,5 +83,5 @@
     </div>
   </div>
 
-  
+
 @endsection

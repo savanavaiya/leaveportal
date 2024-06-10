@@ -45,6 +45,7 @@ Route::get('/short/leave', [LeaveController::class,'shortleave'])->name('shortle
 Route::get('/view_data', [DataController::class,'viewdata'])->name('viewdata')->middleware('Admin');
 // Route::get('/view_data/view_more', [DataController::class,'viewmore'])->name('viewmore');
 Route::get('/view_data/view_more/{id}', [DataController::class,'viewmore'])->name('viewmore')->middleware('Admin');
+Route::get('/view_data/view_more/shortleaves/{id}', [DataController::class,'viewshortmore'])->name('viewshortmore')->middleware('Admin');
 
 Route::get('/monthly_leaves', [DataController::class,'monleav'])->name('monleav')->middleware('Admin');
 Route::post('/monthly_leaves/separes_months', [DataController::class,'sermonstore'])->name('sermon')->middleware('Admin');

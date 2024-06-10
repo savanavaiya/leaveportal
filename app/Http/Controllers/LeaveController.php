@@ -33,15 +33,15 @@ class LeaveController extends Controller
             'title' => 'Leave Application Update',
             'body' => 'Reject Of Leave Application For Thease Reason '.$reasonreject,
         ];
-       
+
         Mail::to($em)->send(new \App\Mail\MyTestMail($details));
 
         // $message = 'Reject Of Leave Application';
         // $u = User::where('email',$em)->first();
         // $uid = $u->id;
-        
+
         // event(new \App\Events\StatusLiked($message,$uid));
-        
+
         return true;
     }
 
@@ -59,6 +59,7 @@ class LeaveController extends Controller
             'leave_datefrom' => $acceptapp->from,
             'leave_dateto' => $acceptapp->to,
             'leave_total_days' => $acceptapp->total_days,
+            'leave_reason' => $acceptapp->reason,
         ]);
 
         $acceptapp->status = '1';
@@ -71,13 +72,13 @@ class LeaveController extends Controller
             'title' => 'Leave Application Update',
             'body' => 'Accept Your Leave Application'
         ];
-       
+
         Mail::to($em)->send(new \App\Mail\MyTestMail($details));
 
         // $message = 'Accept Your Leave Application';
         // $u = User::where('email',$em)->first();
         // $uid = $u->id;
-        
+
         // event(new \App\Events\StatusLiked($message,$uid));
 
 

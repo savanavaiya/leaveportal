@@ -9,7 +9,7 @@ class LeaveRecord extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','leave_day','leave_datefrom','leave_dateto','leave_total_days'];
+    protected $fillable = ['user_id','leave_day','leave_datefrom','leave_dateto','leave_total_days','leave_reason'];
 
     public function username()
     {

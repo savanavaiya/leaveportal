@@ -32,6 +32,7 @@
                     <th>Document</th>
                     <th>Total Remaining Leaves</th>
                     <th>Leaves Detail</th>
+                    <th>Short Leaves Detail</th>
                     <th>Task Status</th>
                 </tr>
             </thead>
@@ -52,6 +53,9 @@
                         <td>{{ $value->total_leaves }}</td>
                         <td>
                             <a href="{{ route('viewmore',$value->id) }}" class="btn btn-dark">View Leaves..!</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('viewshortmore',$value->id) }}" class="btn btn-dark">Short Leaves..!</a>
                         </td>
                         <td>
                             <a href="{{ route('taskstatus',$value->id) }}" class="btn btn-dark">View Task</a>

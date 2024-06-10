@@ -23,7 +23,7 @@ class Home2Controller extends Controller
         $userprofile = User::find(auth()->user()->id);
         $tot = $userprofile->total_leaves;
         $nots = Notice::all();
-        
+
         return view('indexemp',compact('tot','nots','userprofile'));
     }
 
@@ -38,7 +38,7 @@ class Home2Controller extends Controller
         $appups = LeaveappShort::where('email',auth()->user()->email)->orderBy('date','DESC')->get();
         $i=1;
         $userprofile = User::find(auth()->user()->id);
-        
+
         return view('shortleave',compact('appups','i','userprofile'));
     }
 
@@ -58,7 +58,7 @@ class Home2Controller extends Controller
                 'reason.required' => 'Please Select The Reason',
                 'half.required' => 'Please Select The Half',
             ]);
-         
+
             if ($validator->fails()) {
                 return response()->json(['error'=>$validator->errors()->all()]);
             }
@@ -84,12 +84,12 @@ class Home2Controller extends Controller
                     'reason' => $request->reason,
                 ]);
             }
-    
+
             $details = [
                 'title' => 'Leave Application',
-                'body' => 'Received Leave Application From Employees'
+                'body' => 'Received Leave Application From Employees ' .$data->name .' on date ' .$data->from .' to ' .$data->to .' total ' . $data->total_days .' days '
             ];
-           
+
             Mail::to('savan.cubezy@gmail.com')->send(new \App\Mail\MyTestMail($details));
         }else{
             $validator = Validator::make($request->all(), [
@@ -105,7 +105,7 @@ class Home2Controller extends Controller
                 'totaldays.required' => 'Enter The Total Days',
                 'reason.required' => 'Please Select The Reason',
             ]);
-         
+
             if ($validator->fails()) {
                 return response()->json(['error'=>$validator->errors()->all()]);
             }
@@ -131,12 +131,12 @@ class Home2Controller extends Controller
                     'reason' => $request->reason,
                 ]);
             }
-    
+
             $details = [
                 'title' => 'Leave Application',
-                'body' => 'Received Leave Application From Employees'
+                'body' => 'Received Leave Application From Employees ' .$data->name .' on date ' .$data->from .' to ' .$data->to .' total ' . $data->total_days .' days '
             ];
-           
+
             Mail::to('savan.cubezy@gmail.com')->send(new \App\Mail\MyTestMail($details));
         }
 
@@ -144,7 +144,7 @@ class Home2Controller extends Controller
         // $uid = '1';
 
         // event(new \App\Events\StatusLiked($message,$uid));
-       
+
         return true;
     }
 
@@ -163,7 +163,7 @@ class Home2Controller extends Controller
             'totaldays.required' => 'Enter The Total Days',
             'reason.required' => 'Please Select The Reason',
         ]);
-     
+
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()->all()]);
         }
@@ -192,19 +192,17 @@ class Home2Controller extends Controller
 
         $details = [
             'title' => 'Leave Application Update',
-            'body' => 'Received Short Leave Application From Employees'
+            'body' => 'Received Short Leave Application From Employees ' .$data->name .' on date ' .$data->date . ' hours ' .$data->from . ' to ' .$data->to . ' total hours ' .$data->total_hours
         ];
-       
+
         Mail::to('savan.cubezy@gmail.com')->send(new \App\Mail\MyTestMail($details));
-       
+
         return true;
     }
 
     public function viewmyleaves()
     {
         $leaves = LeaveRecord::where('user_id',auth()->user()->id)->orderBy('leave_datefrom','asc')->get();
-
-        dd($leaves);
         $i=1;
         $userprofile = User::find(auth()->user()->id);
         return view('viewmytotalleaves',compact('leaves','i','userprofile'));

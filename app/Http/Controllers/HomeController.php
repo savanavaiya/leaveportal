@@ -55,7 +55,7 @@ class HomeController extends Controller
 
     public function reg_store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         if ($request->id == '0') {
             $validator = Validator::make($request->all(), [
